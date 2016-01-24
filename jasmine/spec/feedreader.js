@@ -108,16 +108,17 @@ $(function() {
 
     /* Before running the test, load a feed and save its first entry.
      * Then load a second feed and save its first entry.
-     * Only call done() in the callback of the second loadFeed so that the
-     * framework correctly receives only one signal, when setup is finished.
      */
     beforeEach(function(done) {
       loadFeed(0, function() {
         firstFeed = $('.entry')[0];
-      });
-      loadFeed(1, function() {
-        secondFeed = $('.entry')[0];
-        done();
+
+        // This is part of the first feed's callback so that it executes only
+        // once the first feed successfully loads.
+        loadFeed(1, function() {
+          secondFeed = $('.entry')[0];
+          done();
+        });
       });
     });
 
