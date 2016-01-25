@@ -89,10 +89,9 @@ $(function() {
     /* When the loadFeed function is called and completes its work,
      * there is at least a single .entry element within the .feed container.
      */
-    it('loads at least one entry into .feed', function(done) {
+    it('loads at least one entry into .feed', function() {
       var entryLoaded = $('.entry').length;
-      expect(entryLoaded).toBeTruthy();
-      done();
+      expect(entryLoaded).toBeGreaterThan(0);
     });
 
   });
@@ -122,9 +121,8 @@ $(function() {
     /* This test ensures when a new feed is loaded
      * by the loadFeed function that the content actually changes.
      */
-    it('actually changes content when a new feed is loaded', function(done) {
+    it('actually changes content when a new feed is loaded', function() {
       expect(firstFeed.isEqualNode(secondFeed)).toBe(false);
-      done();
     });
   });
 }());
