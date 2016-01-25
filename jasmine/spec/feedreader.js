@@ -29,7 +29,6 @@ $(function() {
     it('has URLs', function() {
       allFeeds.forEach( function(feed) {
         var url = feed.url;
-        expect(url).toBeDefined();
         expect(url).toBeTruthy();
       });
     });
@@ -41,7 +40,6 @@ $(function() {
     it('has names', function() {
       allFeeds.forEach(function(feed) {
         var name = feed.name;
-        expect(name).toBeDefined();
         expect(name).toBeTruthy();
       });
     });
@@ -54,8 +52,7 @@ $(function() {
   describe('The menu', function() {
       // This test ensures the menu element is hidden by default.
       it('is hidden by default', function() {
-        var menuIsHidden = $('.menu-hidden').length;
-        expect(menuIsHidden).toBeTruthy();
+        expect($('body').hasClass('menu-hidden')).toBeTruthy();
       });
 
       /* This test ensures the menu changes
